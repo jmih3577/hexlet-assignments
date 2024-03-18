@@ -9,7 +9,7 @@ class Segment {
         this.point2 = p2;
     }
 
-    public Point getStartPoint() {
+    public Point getBeginPoint() {
         return point1;
     }
 
