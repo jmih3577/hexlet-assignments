@@ -29,7 +29,7 @@ class Flat implements Home {
     }
 
     public String toString() {
-        return "Квартира площадью " + getArea() + " метров на " + floor + "этаже";
+        return "Квартира площадью " + getArea() + " метров на " + floor + " этаже";
     }
 }
 // END
