@@ -14,7 +14,7 @@ public class Application {
     }
     @GetMapping("/about")
     String about() {
-        return "Hello World! Hi";
+        return "Hello World!";
     }
 }
 // END
