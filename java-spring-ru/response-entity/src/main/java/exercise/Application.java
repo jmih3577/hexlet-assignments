@@ -1,13 +1,11 @@
 package exercise;
 
-import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,12 +40,12 @@ public class Application {
 
     }
     @PostMapping("/post")
-    public ResponseEntity<Post> post(@PathVariable Post post) {
+    public ResponseEntity<Post> post(@RequestBody Post post) {
         posts.add(post);
         return ResponseEntity.status(HttpStatus.CREATED).body(post);
     }
     @PutMapping("/post/{id}")
-    public ResponseEntity<Post> put(@PathVariable String id, @PathVariable Post postData) {
+    public ResponseEntity<Post> put(@PathVariable String id, @RequestBody Post postData) {
         Optional<Post> findPost = posts.stream().filter(post -> post.getId().equals(id)).findFirst();
         if(findPost.isPresent()) {
             Post foundPost = findPost.get();
