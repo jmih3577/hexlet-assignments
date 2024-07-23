@@ -29,22 +29,22 @@ public class Application {
     }
 
     // BEGIN
-    @GetMapping("/post")
+    @GetMapping("/posts")
     public ResponseEntity<List<Post>> get(@RequestParam(defaultValue = "10") Integer limit) {
         var retPosts = posts.stream().limit(limit).toList();
         return ResponseEntity.ok().header("X-Total-Count", String.valueOf(posts.size())).body(retPosts);
     }
-    @GetMapping("/post/{id}")
+    @GetMapping("/posts/{id}")
     public ResponseEntity<Post> getById(@PathVariable String id) {
         return ResponseEntity.of(posts.stream().filter(p -> p.getId().equals(id)).findFirst());
 
     }
-    @PostMapping("/post")
+    @PostMapping("/posts")
     public ResponseEntity<Post> post(@RequestBody Post post) {
         posts.add(post);
         return ResponseEntity.status(HttpStatus.CREATED).body(post);
     }
-    @PutMapping("/post/{id}")
+    @PutMapping("/posts/{id}")
     public ResponseEntity<Post> put(@PathVariable String id, @RequestBody Post postData) {
         Optional<Post> findPost = posts.stream().filter(post -> post.getId().equals(id)).findFirst();
         if (findPost.isPresent()) {
