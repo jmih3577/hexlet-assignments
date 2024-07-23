@@ -47,7 +47,7 @@ public class Application {
     @PutMapping("/post/{id}")
     public ResponseEntity<Post> put(@PathVariable String id, @RequestBody Post postData) {
         Optional<Post> findPost = posts.stream().filter(post -> post.getId().equals(id)).findFirst();
-        if(findPost.isPresent()) {
+        if (findPost.isPresent()) {
             Post foundPost = findPost.get();
             foundPost.setBody(postData.getBody());
             foundPost.setId(postData.getId());
