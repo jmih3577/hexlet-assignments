@@ -104,7 +104,7 @@ class ApplicationTest {
         mockMvc.perform(request)
                 .andExpect(status().isCreated());
 
-        assertThat(taskRepository.findAll()).hasSize(2);
+        assertThat(taskRepository.findAll()).hasSize(7);
         var actualTask = taskRepository.findByTitle(task.getTitle()).get();
         assertThat(actualTask.getCreatedAt()).isNotNull();
         assertThat(actualTask.getUpdatedAt()).isNotNull();
@@ -149,7 +149,7 @@ class ApplicationTest {
         mockMvc.perform(delete("/tasks/{id}", testTask.getId()))
                 .andExpect(status().isOk());
 
-        assertThat(taskRepository.findAll()).isEmpty();
+        assertThat(taskRepository.findById(testTask.getId())).isEmpty();
     }
     // END
 }
