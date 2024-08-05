@@ -41,7 +41,7 @@ public class Guest {
     @Pattern(regexp = "^[+][0-9]{11,13}$")
     public String phoneNumber;
     @Length(min = 4, max = 4)
-    public long clubCard;
+    public String clubCard;
     @Future
     private LocalDate cardValidUntil;
     // END
